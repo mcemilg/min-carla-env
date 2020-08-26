@@ -5,6 +5,15 @@ A minimal 2d Carla environment implementation for Deep Reinforcement Learning re
 
 The repo has two core files: `matrix_world.py` that includes Carla world operations, car, sensors, etc. and `env.py` that contains `gym` like environment that has run and reset operations and prepares rewards, observations and etc.
 
+Here some basic features you can use:
+- 2D like RGB or minimal semantic segmented observations
+- Able to change width and height of the observations
+- Use different weather conditions
+- Works with different maps
+- Includes fast mode to use in training
+- Has parameter to run without rendering
+- Debug mode
+
 ## Basic Usage
 
 The file `run.py` contains a runnable usage in it. Also here a snippet to make it run:
