@@ -1,0 +1,4 @@
+carla==0.9.7
+gym==0.17.1
+numpy==1.18.1
+opencv-python==4.2.0.32
