@@ -14,6 +14,8 @@ Here some basic features you can use:
 - Has parameter to run without rendering
 - Debug mode
 
+> There is an article includes brief implementation details, aims and goals of the 2D Carla environment, check it out [here](https://mcemilg.github.io/general/2020/08/20/carla/) if you interested 
+
 ## Basic Usage
 
 The file `run.py` contains a runnable usage in it. Also here a snippet to make it run:
