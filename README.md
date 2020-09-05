@@ -16,6 +16,16 @@ Here some basic features you can use:
 
 > There is an article includes brief implementation details, aims and goals of the 2D Carla environment, check it out [here](https://mcemilg.github.io/general/2020/08/20/carla/) if you interested 
 
+You can find an example model trained with the environment. The model is a simple DQN model adjusted from [here](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html) to the environment. There are some differences from the original implementation like epsilon decay, optimization steps and etc. Here is video from the trained model:
+
+[![agent-vid](https://img.youtube.com/vi/TJ2QkC6DSng/0.jpg)](https://www.youtube.com/watch?v=TJ2QkC6DSng)
+
+You can run the pretrained model demo with the following command:
+
+```bash
+$ python -m models.run --path models/model/base-model.pt
+```
+
 ## Basic Usage
 
 The file `run.py` contains a runnable usage in it. Also here a snippet to make it run:
