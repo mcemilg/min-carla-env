@@ -11,12 +11,8 @@ class DQN(nn.Module):
         super(DQN, self).__init__()
         self.conv1 = nn.Conv2d(channel, 16, kernel_size=5, stride=2)
         self.bn1 = nn.BatchNorm2d(16)
-        # self.conv1 = nn.Conv2d(channel, 8, kernel_size=5, stride=2)
-        # self.bn1 = nn.BatchNorm2d(8)
         self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=2)
         self.bn2 = nn.BatchNorm2d(32)
-        # self.conv2 = nn.Conv2d(8, 16, kernel_size=5, stride=2)
-        # self.bn2 = nn.BatchNorm2d(16)
         self.conv3 = nn.Conv2d(32, 32, kernel_size=5, stride=2)
         self.bn3 = nn.BatchNorm2d(32)
 
@@ -27,12 +23,6 @@ class DQN(nn.Module):
         convw = conv2d_size_out(conv2d_size_out(conv2d_size_out(w)))
         convh = conv2d_size_out(conv2d_size_out(conv2d_size_out(h)))
         linear_input_size = convw * convh * 32
-        # self.hidden = nn.Linear(linear_input_size, 1024)
-        # self.head = nn.Linear(1024, outputs)
-        # self.hidden = nn.Linear(linear_input_size, 128)
-        # self.hidden1 = nn.Linear(linear_input_size, 256)
-        # self.hidden2 = nn.Linear(256, 128)
-        # self.head = nn.Linear(128, outputs)
         self.head = nn.Linear(linear_input_size, outputs)
 
     # Called with either one element to determine next action, or a batch
@@ -41,11 +31,4 @@ class DQN(nn.Module):
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
-        # x = F.relu(self.hidden(x.view(x.size(0), -1)))
-        # x = F.relu(self.hidden1(x.view(x.size(0), -1)))
-        # x = F.relu(self.hidden2(x))
-        # return F.tanh(self.head(x.view(x.size(0), -1)))
         return self.head(x.view(x.size(0), -1))
-        # return self.head(self.hidden(x.view(x.size(0), -1)))
-        # return self.head(x)
-        # return F.tanh(self.head(x))
