@@ -29,7 +29,7 @@ class CarlaEnv(gym.Env):
     Unfortunately it only uses the gym environment interface.
     Its not that much compatible with gym."""
 
-    def __init__(self, client, config, world_config={}, debug=False):
+    def __init__(self, client, config, world_config={}, debug=False, demo=False):
         self.debug = debug
         self.done = False
         self.rgb_data = None
@@ -41,6 +41,7 @@ class CarlaEnv(gym.Env):
         self.crossed_lane_hist = []
         self.config = config
         self.max_step = config["max_step"]
+        self.demo = demo
 
         # build world
         self.mw = MatrixWorld(client, **world_config)
@@ -287,5 +288,9 @@ class CarlaEnv(gym.Env):
         if self.stuck_count > 20:   # stop on stuck
             self.done = True
             reward -= 100.0
+        
+        if self.demo and self.stuck_count < 20:
+            self.done = False
+
         return self.semantic_data, reward, self.done, {}
         # return (self.rgb_data, self.semantic_data), reward, self.done, {}
